@@ -1,0 +1,33 @@
+{% include 'base.html' %}
+{% include 'navigation.html' %}
+{% block content %}
+{% if error == "no" %}
+<script>
+    alert('Record saved successfully');
+    window.location = "{% url 'viewproject' %}"
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('Invalid login! try again');
+</script>
+{% endif %}
+
+
+
+<div class="container">
+    <h2 class="text-center">Add Project</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Developer Name</label>
+        <input type="text" class="form-control" name="name" />
+        <label>Mobile</label>
+        <input type="int" class="form-control" name="mobile" />
+        <label>Project</label>
+        <input type="text" class="form-control" name="project" />
+<br>
+        <input type="submit" value="Submit" class="form-control btn btn-primary">
+    </form>
+</div>    
+{% endblock %}
